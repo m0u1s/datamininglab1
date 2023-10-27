@@ -1,3 +1,10 @@
+def attributeIndex(atr: list, cols: list):
+    index_arr = []
+    for i in cols:
+        index_arr.append(atr.index(i))
+    return index_arr
+
+
 def mean(matrix: list, col_index):
     n = len(matrix)
     sum = 0
@@ -54,14 +61,19 @@ def fill_mode(matrix: list,  col_index: int):
         if(matrix[i][col_index] == ''):
             matrix[i][col_index] = value
 
-def fill_miss_col(matrix: list, cols: list, type: list, method= 'mean'):
+def fill_miss_col(matrix: list, cols: list, at: list, type: list, method= 'mean'):
     num_rows= len(matrix)
     num_cols= len(matrix[0])
+    index_cols = attributeIndex(at, cols)
 
     if(method == 'mean'):
-        pass
+        for i in index_cols:
+            fill_mean(matrix, i)
     if(method == 'median'):
-        pass
+        for i in index_cols:
+            fill_median(matrix, i)
     if(method == 'mode'):
-        pass
+        for i in index_cols:
+            fill_mode(matrix, i)
+
     return matrix
