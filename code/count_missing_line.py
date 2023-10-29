@@ -19,6 +19,4 @@ def count_missing(matrix: list):
         print("------------------------")
     """
     return missing
-
-#code run
 print(count_missing(readFile.myMatrix))
