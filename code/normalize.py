@@ -1,3 +1,13 @@
+import command_line
+import readFile
+import output
+
+def attributeIndex(atr: list, cols: list):
+    index_arr = []
+    for i in cols:
+        index_arr.append(atr.index(i))
+    return index_arr
+
 def mean(matrix: list, col_index):
     n = len(matrix)
     sum = 0
@@ -61,6 +71,16 @@ def normalize_z_score(matrix: list, col_index):
         if(matrix[i][col_index] != ''):
             matrix[i][col_index] = (float(matrix[i][col_index]) - col_mean) / std_dev
 
-def normalize(matrix: list, cols: list, method = 'min_max'):
-    #not done
-    pass
+def normalize(matrix: list, cols: list, at: list, method = 'min-max'):
+    index_cols = attributeIndex(at, cols)
+
+    if method == 'min-max':
+        normalize_min_max(matrix, index_cols)
+    else: 
+        normalize_z_score(matrix, index_cols)
+
+#code run
+columns = command_line.columns.split(',')
+normalize(readFile.myMatrix, columns, readFile.at, command_line.args.method)
+
+output.outputFile(readFile.myMatrix, readFile.at)

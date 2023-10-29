@@ -1,6 +1,5 @@
-import csv 
-from extract_missing import *
-from Fill_missing import * 
+import csv
+import command_line
 def is_float(string):
     try:
         float(string)
@@ -37,10 +36,6 @@ def readFile(FileName: str):
     csv_file.close()
     return matrix, attribute, line_count
 
-myMatrix, at, l = readFile('D:\DATA_MINING_LAB\Lab1\code\house-prices.csv')
+#code run
+myMatrix, at, l = readFile(command_line.args.input)
 type = check_properties(myMatrix)
-print(mean(myMatrix, 3))
-fill_mean(myMatrix, 3)
-T = []
-transpose(myMatrix, T)
-print(T[3])

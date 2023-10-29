@@ -1,9 +1,12 @@
+import command_line
+import readFile
+import output
+
 def attributeIndex(atr: list, cols: list):
     index_arr = []
     for i in cols:
         index_arr.append(atr.index(i))
     return index_arr
-
 
 def mean(matrix: list, col_index):
     n = len(matrix)
@@ -45,25 +48,23 @@ def fill_mean(matrix: list, col_index: int):
     value = mean(matrix, col_index)
     for i in range(0, n):
         if(matrix[i][col_index] == ''):
-            matrix[i][col_index] = value
+            matrix[i][col_index] = str(value)
 
 def fill_median(matrix: list, col_index: int):
     n = len(matrix)
     value = median(matrix, col_index)
     for i in range(0, n):
         if(matrix[i][col_index] == ''):
-            matrix[i][col_index] = value
+            matrix[i][col_index] = str(value)
 
 def fill_mode(matrix: list,  col_index: int):
     n = len(matrix)
     value = mode(matrix, col_index)
     for i in range(0, n):
         if(matrix[i][col_index] == ''):
-            matrix[i][col_index] = value
+            matrix[i][col_index] = str(value)
 
-def fill_miss_col(matrix: list, cols: list, at: list, type: list, method= 'mean'):
-    num_rows= len(matrix)
-    num_cols= len(matrix[0])
+def fill_miss_col(matrix: list, cols: list, at: list, method= 'mean'):
     index_cols = attributeIndex(at, cols)
 
     if(method == 'mean'):
@@ -76,4 +77,8 @@ def fill_miss_col(matrix: list, cols: list, at: list, type: list, method= 'mean'
         for i in index_cols:
             fill_mode(matrix, i)
 
-    return matrix
+#code run
+columns = command_line.columns.split(',')
+fill_miss_col(readFile.myMatrix, columns, readFile.at, command_line.args.method)
+
+output.outputFile(readFile.myMatrix, readFile.at)
