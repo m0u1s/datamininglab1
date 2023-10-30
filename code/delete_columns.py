@@ -35,7 +35,7 @@ def outPutMatrix(matrix: list, attribute: list, delete_col: list):
     return output_matrix, fields
 
 #code run
-threshold= float(input('Nhap nguong: '))
+threshold= float(input('Threshold (Default= 0.5): '))
 delete_columns= delColumn(readFile.myMatrix)
 output_matrix, fields =outPutMatrix(readFile.myMatrix, readFile.at, delete_columns)
 
