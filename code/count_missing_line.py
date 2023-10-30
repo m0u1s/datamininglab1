@@ -16,4 +16,5 @@ def count_missing(matrix: list):
         print("------------------------")
     """
     return missing
+print("Line missing: ", end= '')
 print(count_missing(readFile.myMatrix))
