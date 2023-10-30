@@ -1,3 +1,6 @@
+import readFile
+import output
+
 def extract_duplicate(matrix: list):
     num_rows = len(matrix)
     num_cols = len(matrix[0])
@@ -8,8 +11,16 @@ def extract_duplicate(matrix: list):
                 duplicate_rows.append(j)
     
     #check again to delete duplicate value in duplicate_rows
-    for i in range(0, len(duplicate_rows)):
-        for j in range(i+1, len(duplicate_rows)):
-            if duplicate_rows[i] == duplicate_rows[j]:
-                duplicate_rows.pop(j)
-    return duplicate_rows #return list of duplicate rows
+    duplicate_rows = list(set(duplicate_rows))
+    return duplicate_rows
+def outputMatrix(matrix: list, duplicate_rows: list):
+    out = []
+    for i in range(0, len(matrix)):
+        if i not in duplicate_rows:
+            out.append(matrix[i])
+    return out
+#code run
+dup_row= extract_duplicate(readFile.myMatrix)
+out_matrix= outputMatrix(readFile.myMatrix, dup_row)
+
+output.outputFile(out_matrix, readFile.at)
