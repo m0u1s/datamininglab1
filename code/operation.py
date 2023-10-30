@@ -33,7 +33,8 @@ def operation(matrix: list,at: str, col1: str, col2: str, operation: str, result
             return "Error: operation is not valid"
     
     return matrix, at
-
+#code run
+#py operation.py --input=house-prices.csv --col1=Id --col2=MSSubClass --output=2.csv
 op = input('Operation(+, -, *, /): ')
 result = command_line.args.col1 + ' ' + op + ' ' +command_line.args.col2
 try:
