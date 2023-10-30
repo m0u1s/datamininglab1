@@ -9,12 +9,12 @@ def countNull(matrix: list, col_index):
             cnt+=1
     return cnt
 
-def delColumn(matrix: list):
+def delColumn(matrix: list, threshold = 0.5):
     del_arr = []
     total_ins= len(matrix)
     n = len(matrix[0])
     for i in range(0, n):
-        if countNull(matrix, i) > n / 2:
+        if countNull(matrix, i) > n * threshold:
             del_arr.append(i)
     return del_arr
 
@@ -35,6 +35,7 @@ def outPutMatrix(matrix: list, attribute: list, delete_col: list):
     return output_matrix, fields
 
 #code run
+threshold= float(input('Nhap nguong: '))
 delete_columns= delColumn(readFile.myMatrix)
 output_matrix, fields =outPutMatrix(readFile.myMatrix, readFile.at, delete_columns)
 
